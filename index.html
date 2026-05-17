@@ -316,22 +316,26 @@ button:hover {
     let input;
     let text;
     let comp = 0;
-    let score = {
+    let score = (JSON.parse(localStorage.getItem("score")) || {
         tie: 0,
         win: 0,
         lose: 0
-    };
+    });
+
     document.getElementById('tie').innerHTML = `Tie: ${score.tie}`;
     document.getElementById('win').innerHTML = `Win: ${score.win}`;
     document.getElementById('lose').innerHTML = `Lose: ${score.lose}`;
     function saveChoice(){
         input = document.getElementById('input').value.toLowerCase();
         comp = Math.floor(Math.random() * 3) + 1;
+    
         if(comp === 1){
             comp = 'rock';
-        } else if(comp === 2){
+        } 
+        else if(comp === 2){
             comp = 'paper';
-        } else{
+        } 
+        else{
             comp = 'scissors';
         }
 
@@ -380,15 +384,20 @@ button:hover {
         document.getElementById('tie').innerHTML = `Tie: ${score.tie}`;
         document.getElementById('win').innerHTML = `Win: ${score.win}`;
         document.getElementById('lose').innerHTML = `Lose: ${score.lose}`;
+
+        localStorage.setItem("score", JSON.stringify(score));
     }
 
     function reset() {
         score.tie = 0;
         score.win= 0;
         score.lose = 0;
+
+        localStorage.setItem("score", JSON.stringify(score));
+
         document.getElementById('tie').innerHTML = `Tie: ${score.tie}`;
         document.getElementById('win').innerHTML = `Win: ${score.win}`;
         document.getElementById('lose').innerHTML = `Lose: ${score.lose}`;
-    }
+}
 </script>
 </html>
