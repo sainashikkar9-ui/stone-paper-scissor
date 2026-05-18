@@ -393,7 +393,7 @@ button:hover {
         score.win= 0;
         score.lose = 0;
 
-        localStorage.setItem("score", JSON.stringify(score));
+        localStorage.removeItem("score");
 
         document.getElementById('tie').innerHTML = `Tie: ${score.tie}`;
         document.getElementById('win').innerHTML = `Win: ${score.win}`;
